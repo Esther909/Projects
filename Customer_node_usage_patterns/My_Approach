@@ -1,3 +1,42 @@
-# Objective:
+Objective:
 To analyze customer node usage across various regions, identify trends, 
 and provide actionable insights to optimize node distribution and enhance customer experience.
+
+ 1. What are the number of nodes per region?
+select 
+      region_name,        
+      count(node_id) no_of_nodes   
+      from customer_nodes cn   
+inner join 
+      regions r      
+      on cn.region_id = r.region_id  
+      group by region_name  
+      order by no_of_nodes desc;
+
+2. How many customers are allocated to each region?
+SELECT 
+    region_name,         
+    COUNT(customer_id) no_of_customers         
+    FROM customer_nodes cn  
+inner join 
+    regions r     
+    on cn.region_id = r.region_id  
+    GROUP BY region_name  
+    Order by no_of_customers DESC
+
+3. What is the total amount for each transaction type?
+SELECT 
+   txn_type AS transaction_type, 
+   SUM(txn_amount) AS total_amount 
+   FROM customer_transactions  
+   GROUP BY txn_type
+
+4. What is the average total historical deposit counts and amounts for all customers?
+SELECT        
+   Count(txn_type) AS total_deposit_count,        
+   sum(txn_amount) AS total_deposit_amount,       
+   Count(distinct(customer_id)) AS total_deposit_customer,        
+   Count(txn_type)/Count(distinct(customer_id)) as Average_deposit_count,        
+   sum(txn_amount)/Count(distinct(customer_id)) as Average_deposit_Amount 
+   FROM customer_transactions 
+   where txn_type = 'deposit'
