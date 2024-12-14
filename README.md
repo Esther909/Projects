@@ -25,3 +25,7 @@ This project focused on analyzing call center data to understand call volume, cu
  - Call volume analysis included calculating the number of calls by day of the week and identifying the maximum call duration per day.
  - Customer satisfaction was analyzed by calculating the minimum, maximum, and average csat scores, excluding scores of 0 from the average calculation.
  - For service performance, response time counts by call center were calculated and ordered to identify the best and worst performing centers.
+
+# 3. Background - Analysing Customer Node Pattern
+As a data analyst at Databank Solutions, I am responsible for overseeing data analytics projects that support the company's strategic goals. Here, I was tasked with analyzing customer node usage patterns across different regions to optimize node distribution, improve customer experience, and reduce operational costs.
+# Tasks Performed
