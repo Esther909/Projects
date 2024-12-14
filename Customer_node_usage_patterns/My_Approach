@@ -40,3 +40,30 @@ SELECT
    sum(txn_amount)/Count(distinct(customer_id)) as Average_deposit_Amount 
    FROM customer_transactions 
    where txn_type = 'deposit'
+
+5. What is the total transaction amount per node?
+SELECT 
+   node_id,sum(txn_amount) as trans_amount
+   FROM customer_transactions ct 
+   inner join  customer_nodes c     
+   on ct.customer_id = c.customer_id 
+   GROUP BY node_id  
+   order BY node_id DESC
+
+6. What is transaction amount per region?
+SELECT 
+   region_id,sum(txn_amount) as trans_amount 
+   FROM customer_transactions ct 
+   inner join  customer_nodes c     
+   on ct.customer_id = c.customer_id 
+   GROUP BY region_id  
+   order BY region_id DESC
+
+7. What are the transaction amount per region and node?
+SELECT 
+   region_id,node_id,sum(txn_amount) as trans_amount 
+   FROM customer_transactions ct 
+   inner join  customer_nodes c    
+   on ct.customer_id = c.customer_id 
+   GROUP BY region_id,node_id 
+   order BY region_id DESC
